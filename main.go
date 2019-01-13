@@ -19,14 +19,14 @@ func main() {
 func Main(args []string) error {
 	switch len(args) {
 	case 1:
-		return convert(os.Stdin, os.Stdout)
+		return Convert(os.Stdin, os.Stdout)
 	case 2:
 		from, err := os.Open(args[1])
 		if err != nil {
 			return err
 		}
 		defer from.Close()
-		return convert(from, os.Stdout)
+		return Convert(from, os.Stdout)
 	case 3:
 		from, err := os.Open(args[1])
 		if err != nil {
@@ -38,7 +38,7 @@ func Main(args []string) error {
 			return err
 		}
 		defer to.Close()
-		return convert(from, to)
+		return Convert(from, to)
 	default:
 		return errors.New("Invalid arguments")
 	}
@@ -46,7 +46,7 @@ func Main(args []string) error {
 
 var re = regexp.MustCompile(`\(注:[^)]+\)`)
 
-func convert(r io.Reader, w io.Writer) error {
+func Convert(r io.Reader, w io.Writer) error {
 	b, err := ioutil.ReadAll(r)
 	if err != nil {
 		return err
