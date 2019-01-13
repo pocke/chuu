@@ -1,7 +1,7 @@
 Chuu (注)
 ===
 
-注 convert `(注:something)` to markdown style notes.
+注 converts `(注:something)` to markdown style notes.
 
 Usage
 ---
